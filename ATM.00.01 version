@@ -1,0 +1,48 @@
+pin = 1234
+chances = 3
+ATM_stored_amount = float(20000)
+o = float(ATM_stored_amount)
+print("Press ''1'' to check balance")
+print("press ''2'' to withdrw cash  ")
+try:
+	menu = int(input("Enter Here:    "))
+except ValueError:
+	menu = 0
+	print("Please Enter Correct option")	
+if menu == 1:
+	try:
+		pin2 = int(input("Enter Pin:   "))
+	except ValueError:
+		pin2 = 0
+		print("Please Enter In numbers")
+	if pin2 == pin:
+		print("₹",o,"is your balance")
+elif menu == 2:
+	   while chances > 0:
+	   	try:
+	   		pin1 = int(input("Enter your pin:   "))
+	   	except ValueError:
+	   		pin1 = 0
+	   		print("Please Enter Amount in Numbers")
+	   	if pin1 != pin:
+	   		chances -= 1
+	   		if chances > 0:
+	   			print("Wrong pin ,Try Again")
+	   		elif chances == 0:
+	   			print("System blocked")
+	   			break
+	   	elif pin1 == pin:
+	   		print("Enter You cash")
+	   		try:
+	   			amount = float(input("Enter Here:  "))
+	   		except ValueError:
+	   			amount = 0
+	   			print("Please Enter Amount In numbers")
+	   		if amount > ATM_stored_amount:
+	   			print("Out of maximum Amount")
+	   		elif amount <= ATM_stored_amount:
+	   			ATM_stored_amount -= amount
+	   			print("Debited  ₹",amount," Successfully")
+	   			break
+else:
+	print("You Entered Wrong Option")
